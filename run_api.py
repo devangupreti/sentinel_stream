@@ -1,7 +1,6 @@
 import sys
 import os
 
-# 1. Setup Path
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 if BASE_DIR not in sys.path:
     sys.path.insert(0, BASE_DIR)
@@ -9,9 +8,7 @@ if BASE_DIR not in sys.path:
 import uvicorn
 from fastapi import FastAPI, HTTPException
 
-# 2. Synchronized Imports
 try:
-    # Ensure this matches your filename: interfaces.py
     from src.application.interfaces import AbstractModel 
     from src.domain.entities import Transaction
     from src.domain.data_structures import CircularBuffer, IPBlacklistTrie, HyperLogLog
@@ -19,7 +16,7 @@ try:
     from src.infrastructure.ml_models.onnx_impl import ONNXModel
     print("✅ All modules imported successfully!")
 except ImportError as e:
-    print(f"❌ Import failed. Error: {e}")
+    print(f"Import failed. Error: {e}")
     sys.exit(1)
 
 # 3. Initialization
